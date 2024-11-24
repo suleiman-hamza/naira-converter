@@ -12,12 +12,12 @@ We're excited that you're interested in contributing to this project. Your contr
 2. **Clone Your Fork:**
    - Clone your forked repository to your local machine:
      ```bash
-     git clone https://github.com/<your-username>/currency-converter.git
+     git clone https://github.com/<your-username>/naira-converter.git
      ```
 3. **Set Up the Development Environment:**
    - Install the required dependencies:
      ```bash
-     cd currency-converter
+     cd naira-converter/naira converter app
      npm install
      ```
 4. **Start the Development Server:**
@@ -58,14 +58,9 @@ We're excited that you're interested in contributing to this project. Your contr
 * **Write clean and well-documented code.**
 * **Follow TypeScript best practices.**
 
-**Testing**
-
-* **Write unit tests to cover your changes.**
-* **Run the existing test suite to ensure your changes don't break anything.**
-
 **Code Review**
 
-* **Be patient and respectful during the code review process.**
+* **Be patient during the code review process.**
 * **Address feedback and suggestions from reviewers.**
 * **Be open to alternative approaches and improvements.**
 

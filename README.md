@@ -32,7 +32,7 @@ We're excited that you're interested in contributing to this project. Your contr
 1. **Create a New Branch:**
    - Create a new branch for your feature or bug fix:
      ```bash
-     git checkout -b feature-name
+     git checkout -b branch-name
      ```
 2. **Make Your Changes:**
    - Make your desired changes to the codebase.
@@ -45,10 +45,10 @@ We're excited that you're interested in contributing to this project. Your contr
 4. **Push Your Changes to Your Fork:**
    - Push your changes to your remote fork:
      ```bash
-     git push origin feature-name
+     git push origin branch-name
      ```
 5. **Create a Pull Request:**
-   - On GitHub, create a pull request from your feature branch to the main branch of the original repository.
+   - On GitHub, create a pull request from your branch to the main branch of the original repository.
    - Provide a clear and concise description of your changes in the pull request.
 
 **Code Style and Formatting**

@@ -1,9 +1,13 @@
-**"#Naira-converter"** 
+## Naira-converter
+
+
 **Contribution Guide**
 
 **Welcome to the Currency Converter Project!**
 
 We're excited that you're interested in contributing to this project. Your contributions help make this project better for everyone.
+
+Naira-X is a free and open source middle and back-end template. Using the latest `vue3`, `vite`, `TypeScript` and other mainstream technology development.
 
 **Getting Started**
 
@@ -57,6 +61,21 @@ We're excited that you're interested in contributing to this project. Your contr
 * **Use clear and concise variable and function names.**
 * **Write clean and well-documented code.**
 * **Follow TypeScript best practices.**
+
+## Git Contribution submission specification
+
+- reference [vue](https://github.com/vuejs/vue/blob/dev/.github/COMMIT_CONVENTION.md) specification.
+
+  - `feat` Add new features
+  - `fix` Fix the problem/BUG
+  - `style` The code style is related and does not affect the running result
+  - `perf` Optimization/performance improvement
+  - `refactor` Refactor
+  - `revert` Undo edit
+  - `test` Test related
+  - `chore` Dependency update/scaffolding configuration modification etc.
+  - `types` Type definition file changes
+  - `wip` In development
 
 **Code Review**
 

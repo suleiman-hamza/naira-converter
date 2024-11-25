@@ -1,4 +1,4 @@
-"# naira-converter" 
+**"#Naira-converter"** 
 **Contribution Guide**
 
 **Welcome to the Currency Converter Project!**
@@ -17,7 +17,7 @@ We're excited that you're interested in contributing to this project. Your contr
 3. **Set Up the Development Environment:**
    - Install the required dependencies:
      ```bash
-     cd naira-converter/naira converter app
+     cd naira-converter
      npm install
      ```
 4. **Start the Development Server:**

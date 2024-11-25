@@ -1,7 +1,7 @@
 <template>
-    <nav>
+    <nav class="flex justify-between">
         <a href="#">Naira-X</a>
-        <Button>Shadcn Button</Button>
+        <Button variant="outline">NGN</Button>
     </nav>
 </template>
 

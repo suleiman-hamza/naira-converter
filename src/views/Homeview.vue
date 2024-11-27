@@ -1,7 +1,7 @@
 <template>
   <Header />
     <Converter />
-  <h2 class="underline text-3xl">Exchange Rates</h2>
+  <h2 class="underline text-3xl">Exchange Rate</h2>
   <div v-if="loading" class="text-xl">Loading...</div>
   <div v-else-if="error" class="text-red-500">Error: {{ error }}</div>
   <div v-else>

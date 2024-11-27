@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, ref } from "vue";
+import { computed, ref, reactive } from "vue";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,6 +16,14 @@ import { currencyToCountryMap } from "@/data";
 const countryNames = ref(["USA", "GERMANY", "JAPAN", "BRASIL", ""]);
 const searchQuery = ref("");
 const countriesNam = ref<{ [key: string]: any }>({});
+
+//test country
+const country = reactive(['NGN', 'GBP', 'EUR', 'USD', 'IRD'])
+const defaultCountry = ref('USD');
+const selectedCountry = defaultCountry
+const setCountry = (country: string) => {
+    selectedCountry.value = country;
+}
 
 const fetchData = async () => {
   try {
@@ -45,7 +53,9 @@ const getCountryCode = (currencyCode: string) => {
 <template>
   <Dialog>
     <DialogTrigger as-child>
-      <Button variant="outline"> FLag USD </Button>
+      <Button variant="secondary">
+        {{ selectedCountry }}
+      </Button>
     </DialogTrigger>
     <DialogContent
       class="sm:max-w-[500px] grid-rows-[auto_minmax(0,1fr)_auto] p-0 max-h-[90dvh]"
@@ -66,7 +76,7 @@ const getCountryCode = (currencyCode: string) => {
       </DialogHeader>
       <div class="grid gap-4 py-2.5 px-6 overflow-y-auto">
         <div class="flex flex-col max-h-[80dvh]">
-          <ul>
+          <!-- <ul>
             <li
               v-for="country in filteredCountries"
               :key="country"
@@ -79,9 +89,19 @@ const getCountryCode = (currencyCode: string) => {
                   class="rounded-full w-8 h-8"
                 />
               </span>
-              {{ country.name }}
+              {{ country.code }}
             </li>
-          </ul>
+          </ul> -->
+          <button v-for="country in filteredCountries" :key="country" class="flex items-center gap-2 mt-4" @click="setCountry(country.code)">
+            <span>
+                <img
+                  :src="`https://flagcdn.com/w40/${getCountryCode(country.code).toLowerCase()}.png`"
+                  alt="flag"
+                  class="rounded-full w-8 h-8"
+                />
+            </span>
+            {{ country.code }}
+        </button>
         </div>
       </div>
     </DialogContent>

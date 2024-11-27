@@ -3,6 +3,8 @@
     <div>
       <router-link class="font-bold text-2xl" to="">Naira-X</router-link>
     </div>
+</template>
+
 
     <div>
       <Button>Shadcn Button</Button>

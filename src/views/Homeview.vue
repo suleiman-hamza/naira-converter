@@ -47,3 +47,4 @@ const fetchData = async () => {
 // Fetch data on component load
 fetchData();
 </script>
+   

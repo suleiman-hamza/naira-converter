@@ -1,12 +1,20 @@
 <template>
-    <nav class="flex justify-between">
-        <a href="#">Naira-X</a>
-        <Button variant="outline">NGN</Button>
-    </nav>
+  <nav class="max-w-4xl flex items-center justify-between mb-8">
+    <div>
+      <router-link class="font-bold text-2xl" to="">Naira-X</router-link>
+    </div>
+    <div>
+      <CountriesModal />
+    </div>
+  </nav>
 </template>
 
-
-<script setup lang="ts">
-import { ref } from 'vue';
-import { Button } from '@/components/ui/button'
+<script lang="ts" setup>
+import CountriesModal from "../components/Modal/CoutriesModal.vue";
 </script>
+
+<style scoped>
+/* nav {
+  border: 1px solid red; 
+} */
+</style>

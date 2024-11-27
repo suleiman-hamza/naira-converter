@@ -22,7 +22,7 @@ const setCountry = (country: string) => {
 <template>
   <Dialog>
     <DialogTrigger as-child>
-      <Button variant="outline">
+      <Button variant="secondary">
         {{ selectedCountry }}
       </Button>
     </DialogTrigger>

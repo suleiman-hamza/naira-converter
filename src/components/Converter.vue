@@ -17,9 +17,8 @@ const localizedAmount = ref(0)
 const currentRate = ref(1750)
 
 function clearInputs() {
-    ngnInitialAmount.value = 0
-    localizedAmount.value = 0
-    console.log('sssssffff')
+    ngnInitialAmount.value = 0;
+    localizedAmount.value = 0;
 }
 
 watch(ngnInitialAmount, (newVal) => {
@@ -32,7 +31,7 @@ watch(localizedAmount, (newVal) => {
 
 </script>
 <template>
-        <Card class="max-w-xs mx-auto">
+        <Card class="max-w-xs mx-auto mb-8">
             <CardHeader>
             <CardTitle>Currency Converter</CardTitle>
             <CardDescription>Convert Nigerian NGN to USD</CardDescription>
@@ -57,13 +56,6 @@ watch(localizedAmount, (newVal) => {
             <CardFooter class="flex justify-between px-6 pb-6">
             </CardFooter>
         </Card>
-        <p>{{ localizedAmount }}</p>
-        <!--
-        <div class="grid w-full max-w-sm items-center gap-1.5">
-            <Label for="email">Email</Label>
-            <Input id="email" type="email" placeholder="Email" />
-        </div>
-        -->
 </template>
 <style scoped>
 .con {

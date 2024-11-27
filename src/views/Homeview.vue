@@ -1,5 +1,6 @@
 <template>
   <Header />
+    <Converter />
   <h2 class="underline text-3xl">Exchange Rates</h2>
   <div v-if="loading" class="text-xl">Loading...</div>
   <div v-else-if="error" class="text-red-500">Error: {{ error }}</div>
@@ -25,6 +26,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import Header from "@/components/Header.vue";
+import Converter from "@/components/Converter.vue";
 import axios from "axios";
 
   interface Currency {

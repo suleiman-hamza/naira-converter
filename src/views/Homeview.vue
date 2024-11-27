@@ -9,7 +9,7 @@
         <div class="flex items-center gap-2">
           <figure>
             <img
-              src="`https://flagcdn.com/16x12/ua.png`"
+              src="https://flagcdn.com/16x12/ua.png"
               alt="flag"
               class="rounded-full w-8 h-8"
             />

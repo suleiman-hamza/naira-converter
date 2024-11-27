@@ -42,7 +42,7 @@ interface CurrencyData {
 }
 
 // Reactive states
-const rates = ref<CurrencyData | null>({});
+const rates = ref<CurrencyData | null>(null);
 const loading = ref(true);
 const error = ref<string | null>(null);
 

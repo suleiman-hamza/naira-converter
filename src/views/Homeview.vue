@@ -27,8 +27,22 @@ import { ref } from "vue";
 import Header from "@/components/Header.vue";
 import axios from "axios";
 
+  interface Currency {
+  code: string;
+  alphaCode: string;
+  numericCode: string;
+  name: string;
+  rate: number;
+  date: string;
+  inverseRate: number;   
+}
+
+interface CurrencyData {
+  [currencyCode: string]: Currency;
+}
+
 // Reactive states
-const rates = ref({});
+const rates = ref<CurrencyData | null>({});
 const loading = ref(true);
 const error = ref<string | null>(null);
 

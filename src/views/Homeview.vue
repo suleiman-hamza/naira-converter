@@ -9,7 +9,7 @@
         <div class="flex items-center gap-2">
           <figure>
             <img
-              :src="`https://flagcdn.com/w40/${code.slice(0, 2).toLowerCase()}.png`"
+              src="`https://flagcdn.com/16x12/ua.png`"
               alt="flag"
               class="rounded-full w-8 h-8"
             />
@@ -30,7 +30,7 @@ import axios from "axios";
   interface Currency {
   code: string;
   alphaCode: string;
-  numericCode: string;
+  numericCode: number;
   name: string;
   rate: number;
   date: string;

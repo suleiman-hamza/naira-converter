@@ -24,7 +24,7 @@ const isOpen = ref(false);
     const lowerCaseCountryName = countryName.toLowerCase();
     console.log(lowerCaseCountryName)
     const countryData = countriesNam.value[lowerCaseCountryName];
-    inverseRate.value = countryData.rate
+    inverseRate.value = countryData.inverseRate
     console.log(inverseRate.value)
     // console.log(countriesNam.value)
   }

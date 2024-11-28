@@ -35,7 +35,7 @@ watch(localizedAmount, (newVal) => {
         <Card class="max-w-xs mx-auto mb-8">
             <CardHeader>
             <CardTitle>Currency Converter</CardTitle>
-            <CardDescription>Convert Nigerian NGN to USD</CardDescription>
+            <CardDescription>Convert Nigerian NGN to {{ store.selectedCountry }}</CardDescription>
             </CardHeader>
             <CardContent>
                 <div class="grid items-center w-full gap-4">

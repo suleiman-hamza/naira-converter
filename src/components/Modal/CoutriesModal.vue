@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { computed, ref } from "vue";
-import axios from "axios";
+import { computed, ref, reactive } from "vue";
+import { onMounted } from "vue";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -12,47 +12,31 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "../ui/input";
 import { currencyToCountryMap } from "@/data";
+import { userateStore } from "@/stores/useRateStore";
+const store = userateStore();
 
-const searchQuery = ref("");
-const countriesNam = ref<{ [key: string]: any }>({});
-const selectedCountry = ref("USD");
-const isOpen = ref(false);
+onMounted(()=> {
+  store.fetchData();
 
-const fetchData = async () => {
-  try {
-    const res = await axios.get("https://www.floatrates.com/daily/ngn.json");
-    countriesNam.value = res.data;
-    console.log(countriesNam.value);
-  } catch (e) {
-    console.error("Error Fetching Data:", e);
-  }
-};
-fetchData();
-
-const filteredCountries = computed(() => {
-  if (!searchQuery.value) {
-    return Object.values(countriesNam.value);
-  }
-  return Object.values(countriesNam.value).filter((country: any) =>
-    country.name?.toLowerCase().includes(searchQuery.value.toLowerCase()),
-  );
-});
+})
 
 const getCountryCode = (currencyCode: string) => {
   return currencyToCountryMap[currencyCode.toUpperCase()] || "";
 };
 
-const handleClick = (countryName: string) => {
-  selectedCountry.value = countryName;
-  isOpen.value = false;
+const handleClick = (countrycode: string) => {
+  store.selectedCountry = countrycode;
+  store.getcountryRate(store.selectedCountry)
+  store.isOpen = false;
 };
+
 </script>
 
 <template>
-  <Dialog v-model:open="isOpen">
+  <Dialog v-model:open="store.isOpen">
     <DialogTrigger as-child>
-      <Button variant="outline" @click="isOpen = true">
-        {{ selectedCountry }}
+      <Button variant="outline" @click="store.isOpen = true">
+        {{ store.selectedCountry }}
       </Button>
     </DialogTrigger>
     <DialogContent
@@ -65,7 +49,7 @@ const handleClick = (countryName: string) => {
         </DialogDescription>
         <div class="my-2">
           <Input
-            v-model="searchQuery"
+            v-model="store.searchQuery"
             class="max-w-4xl"
             placeholder="Search for Currency..."
             type="text"
@@ -74,7 +58,7 @@ const handleClick = (countryName: string) => {
       </DialogHeader>
       <div class="grid gap-4 py-2.5 px-6 overflow-y-auto">
         <div class="flex flex-col max-h-[80dvh]">
-          <ul>
+          <!-- <ul>
             <li
               v-for="country in filteredCountries"
               :key="country"
@@ -88,9 +72,19 @@ const handleClick = (countryName: string) => {
                   class="rounded-full w-8 h-8"
                 />
               </span>
-              {{ country.name }}
+              {{ country.code }}
             </li>
-          </ul>
+          </ul> -->
+          <button v-for="country in store.filteredCountries" :key="country" class="flex items-center gap-2 mt-4" @click="handleClick(country.code)">
+            <span>
+                <img
+                  :src="`https://flagcdn.com/w40/${getCountryCode(country.code).toLowerCase()}.png`"
+                  alt="flag"
+                  class="rounded-full w-8 h-8"
+                />
+            </span>
+            {{ country.code }}
+        </button>
         </div>
       </div>
     </DialogContent>

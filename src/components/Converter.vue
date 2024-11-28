@@ -11,10 +11,11 @@ import {
 import Button from './ui/button/Button.vue';
 import Input from './ui/input/Input.vue';
 import Label from './ui/label/Label.vue';
+import { userateStore } from '@/stores/useRateStore';
+const store = userateStore();
 
 const ngnInitialAmount = ref(0)
 const localizedAmount = ref(0)
-const currentRate = ref(1750)
 
 function clearInputs() {
     ngnInitialAmount.value = 0;
@@ -22,11 +23,11 @@ function clearInputs() {
 }
 
 watch(ngnInitialAmount, (newVal) => {
-    localizedAmount.value = newVal / currentRate.value
+    localizedAmount.value = newVal / store.inverseRate
 })
 
 watch(localizedAmount, (newVal) => {
-    ngnInitialAmount.value = newVal * currentRate.value
+    ngnInitialAmount.value = newVal * store.inverseRate
 })
 
 </script>
@@ -43,7 +44,7 @@ watch(localizedAmount, (newVal) => {
                         <Input id="ngn" type="number" v-model="ngnInitialAmount" />
                     </div>
                     <div class="flex flex-col space-y-1.5">
-                        <Label for="for">USD</Label>
+                        <Label for="for">{{ store.selectedCountry }}</Label>
                         <Input id="for" type="number" v-model="localizedAmount"/>
                     </div>
                     <div class="flex flex-col space-y-1.5">

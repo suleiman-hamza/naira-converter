@@ -17,6 +17,7 @@ const searchQuery = ref("");
 const countriesNam = ref<{ [key: string]: any }>({});
 const selectedCountry = ref("USD");
 const isOpen = ref(false);
+const inverseRate = ref();
 
 const fetchData = async () => {
   try {
@@ -42,14 +43,28 @@ const getCountryCode = (currencyCode: string) => {
   return currencyToCountryMap[currencyCode.toUpperCase()] || "";
 };
 
-const handleClick = (countryName: string) => {
-  selectedCountry.value = countryName;
+const objshape = {
+  aed: {
+    aplhacode: 'AED',
+    rate: 240
+  }
+}
+const getcountryRate = (countryName: string) => {
+  const lowerCaseCountryName = countryName.toLowerCase();
+  console.log(lowerCaseCountryName)
+  const countryData = countriesNam.value[lowerCaseCountryName];
+  inverseRate.value = countryData.rate
+  console.log(inverseRate.value)
+  // console.log(countriesNam.value)
+}
+
+
+const handleClick = (countrycode: string) => {
+  selectedCountry.value = countrycode;
+  getcountryRate(selectedCountry.value)
   isOpen.value = false;
 };
 
-function setCountry(country: any) {
-  console.log(country)
-}
 </script>
 
 <template>
@@ -95,7 +110,7 @@ function setCountry(country: any) {
               {{ country.code }}
             </li>
           </ul> -->
-          <button v-for="country in filteredCountries" :key="country" class="flex items-center gap-2 mt-4" @click="setCountry(country.code)">
+          <button v-for="country in filteredCountries" :key="country" class="flex items-center gap-2 mt-4" @click="handleClick(country.code)">
             <span>
                 <img
                   :src="`https://flagcdn.com/w40/${getCountryCode(country.code).toLowerCase()}.png`"

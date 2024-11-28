@@ -13,9 +13,10 @@ import {
 import { Input } from "../ui/input";
 import { currencyToCountryMap } from "@/data";
 
-const countryNames = ref(["USA", "GERMANY", "JAPAN", "BRASIL", ""]);
 const searchQuery = ref("");
 const countriesNam = ref<{ [key: string]: any }>({});
+const selectedCountry = ref("USD");
+const isOpen = ref(false);
 
 const fetchData = async () => {
   try {
@@ -40,12 +41,19 @@ const filteredCountries = computed(() => {
 const getCountryCode = (currencyCode: string) => {
   return currencyToCountryMap[currencyCode.toUpperCase()] || "";
 };
+
+const handleClick = (countryName: string) => {
+  selectedCountry.value = countryName;
+  isOpen.value = false;
+};
 </script>
 
 <template>
-  <Dialog>
+  <Dialog v-model:open="isOpen">
     <DialogTrigger as-child>
-      <Button variant="outline"> FLag USD </Button>
+      <Button variant="outline" @click="isOpen = true">
+        {{ selectedCountry }}
+      </Button>
     </DialogTrigger>
     <DialogContent
       class="sm:max-w-[500px] grid-rows-[auto_minmax(0,1fr)_auto] p-0 max-h-[90dvh]"
@@ -70,7 +78,8 @@ const getCountryCode = (currencyCode: string) => {
             <li
               v-for="country in filteredCountries"
               :key="country"
-              class="flex items-center gap-2 mt-4"
+              class="flex items-center gap-2 mt-4 cursor-pointer"
+              @click="handleClick(country.name)"
             >
               <span>
                 <img

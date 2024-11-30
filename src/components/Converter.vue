@@ -8,6 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+
+import { Skeleton } from "@/components/ui/skeleton";
 import Button from './ui/button/Button.vue';
 import Input from './ui/input/Input.vue';
 import Label from './ui/label/Label.vue';
@@ -37,7 +39,8 @@ watch(localizedAmount, (newVal) => {
 
 </script>
 <template>
-        <Card class="max-w-xs mx-auto mb-8 bg-stone-900 border-gray-600">
+    <Skeleton class="h-80 w-full rounded-xl max-w-xs mx-auto mb-8" v-if="store.loadSkeleton" />
+        <Card class="max-w-xs mx-auto mb-8 bg-stone-900 border-gray-600" v-else-if="store.loadSkeleton === false">
             <CardHeader>
             <CardTitle class="text-white">Currency Converter</CardTitle>
             <CardDescription>Convert Nigerian NGN to {{ store.selectedCountry }}</CardDescription>

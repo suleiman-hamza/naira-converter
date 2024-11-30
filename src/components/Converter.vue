@@ -14,7 +14,7 @@ import Label from './ui/label/Label.vue';
 import { userateStore } from '@/stores/useRateStore';
 const store = userateStore();
 
-const ngnInitialAmount = ref(0)
+const ngnInitialAmount = ref()
 const localizedAmount = ref(0)
 
 function clearInputs() {

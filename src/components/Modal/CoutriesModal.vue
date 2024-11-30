@@ -33,17 +33,17 @@ const handleClick = (countrycode: string) => {
 </script>
 
 <template>
-  <Dialog v-model:open="store.isOpen">
+  <Dialog v-model:open="store.isOpen" >
     <DialogTrigger as-child>
-      <Button variant="outline" @click="store.isOpen = true">
+      <Button variant="outline" @click="store.isOpen = true" class="bg-stone-950 hover:bg-stone-900 hover:text-neutral-200 border-green-600">
         {{ store.selectedCountry }}
       </Button>
     </DialogTrigger>
     <DialogContent
-      class="sm:max-w-[500px] grid-rows-[auto_minmax(0,1fr)_auto] p-0 max-h-[90dvh]"
+      class="sm:max-w-[500px] grid-rows-[auto_minmax(0,1fr)_auto] p-0 max-h-[100dvh] bg-stone-950"
     >
       <DialogHeader class="p-6 pb-0">
-        <DialogTitle>Convert to Currency</DialogTitle>
+        <DialogTitle class="text-gray">Convert to Currency</DialogTitle>
         <DialogDescription>
           Select currency to compare to Nigeria price.
         </DialogDescription>
@@ -56,8 +56,8 @@ const handleClick = (countrycode: string) => {
           />
         </div>
       </DialogHeader>
-      <div class="grid gap-4 py-2.5 px-6 overflow-y-auto">
-        <div class="flex flex-col max-h-[80dvh]">
+      <div class="grid gap-4 overflow-y-auto border mx-1.5">
+        <div class="flex flex-col max-h-[80dvh] divide-y divide-slate-700">
           <!-- <ul>
             <li
               v-for="country in filteredCountries"
@@ -75,12 +75,12 @@ const handleClick = (countrycode: string) => {
               {{ country.code }}
             </li>
           </ul> -->
-          <button v-for="country in store.filteredCountries" :key="country" class="flex items-center gap-2 mt-4" @click="handleClick(country.code)">
+          <button v-for="country in store.filteredCountries" :key="country" class="flex items-center px-2 py-2 gap-2 hover:bg-gray-900" @click="handleClick(country.code)">
             <span>
                 <img
                   :src="`https://flagcdn.com/w40/${getCountryCode(country.code).toLowerCase()}.png`"
                   alt="flag"
-                  class="rounded-full w-8 h-8"
+                  class="rounded-full w-6 h-6"
                 />
             </span>
             {{ country.code }}

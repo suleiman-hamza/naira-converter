@@ -30,6 +30,11 @@ watch(localizedAmount, (newVal) => {
     ngnInitialAmount.value = newVal * store.inverseRate
 })
 
+//issues
+// converter does not re-caculate values in the input after selcting a diffrent country
+// rounding up values in the input
+// focus input after selcting a country from the modal component - to the ngninitial
+
 </script>
 <template>
         <Card class="max-w-xs mx-auto mb-8 bg-stone-900 border-gray-600">

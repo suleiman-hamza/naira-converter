@@ -2,6 +2,7 @@
 import { computed, ref, reactive } from "vue";
 import { onMounted } from "vue";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   Dialog,
   DialogContent,
@@ -35,7 +36,8 @@ const handleClick = (countrycode: string) => {
 <template>
   <Dialog v-model:open="store.isOpen" >
     <DialogTrigger as-child>
-      <Button variant="outline" @click="store.isOpen = true" class="bg-stone-950 hover:bg-stone-900 hover:text-neutral-200 border-green-600">
+      <Skeleton class="h-8 w-20 rounded-full" v-if="store.loadSkeleton" />
+      <Button variant="outline" v-else-if="store.loadSkeleton === false" @click="store.isOpen = true" class="bg-stone-950 hover:bg-stone-900 hover:text-neutral-200 border-green-600">
         {{ store.selectedCountry }}
       </Button>
     </DialogTrigger>

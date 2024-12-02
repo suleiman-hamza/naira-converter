@@ -2,6 +2,7 @@
 import { computed, ref, reactive } from "vue";
 import { onMounted } from "vue";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   Dialog,
   DialogContent,
@@ -35,12 +36,13 @@ const handleClick = (countrycode: string) => {
 <template>
   <Dialog v-model:open="store.isOpen" >
     <DialogTrigger as-child>
-      <Button variant="outline" @click="store.isOpen = true" class="bg-stone-950 hover:bg-stone-900 hover:text-neutral-200 border-green-600">
+      <Skeleton class="h-8 w-20 rounded-xl" v-if="store.loadSkeleton" />
+      <Button variant="outline" v-else-if="store.loadSkeleton === false" @click="store.isOpen = true" class="bg-stone-950 hover:bg-stone-900 hover:text-neutral-200 border-green-600">
         {{ store.selectedCountry }}
       </Button>
     </DialogTrigger>
     <DialogContent
-      class="sm:max-w-[500px] grid-rows-[auto_minmax(0,1fr)_auto] p-0 max-h-[100dvh] bg-stone-950"
+      class="sm:max-w-[500px] grid-rows-[auto_minmax(0,1fr)_auto] p-4 max-h-[100dvh] bg-stone-950"
     >
       <DialogHeader class="p-6 pb-0">
         <DialogTitle class="text-gray">Convert to Currency</DialogTitle>
@@ -56,8 +58,8 @@ const handleClick = (countrycode: string) => {
           />
         </div>
       </DialogHeader>
-      <div class="grid gap-4 overflow-y-auto border mx-1.5">
-        <div class="flex flex-col max-h-[80dvh] divide-y divide-slate-700">
+      <div class="grid gap-4 overflow-y-auto border mx-1.5 rounded-xl">
+        <div class="flex flex-col max-h-[80dvh] divide-y divide-slate-700 rounded-xl">
           <!-- <ul>
             <li
               v-for="country in filteredCountries"

@@ -21,11 +21,6 @@ const store = userateStore();
 const ngnInitialAmount: Ref<number> = ref(0);
 const localizedAmount: Ref<number> = ref(0);
 
-// remove later
-const tryAmount: Ref<number> = ref(0)
-const resultAmount: Ref<number> = ref(0)
-const fakeRates = ref(1667.14)
-
 function clearInputs() {
     ngnInitialAmount.value = 0;
     localizedAmount.value = 0;

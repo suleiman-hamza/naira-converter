@@ -18,7 +18,8 @@ export const userateStore = defineStore('counter', () => {
       const res = await axios.get("https://www.floatrates.com/daily/ngn.json");
       countriesNam.value = res.data;
       console.log(countriesNam.value);
-      inverseRate.value = countriesNam.value.usd.inverseRate
+      inverseRate.value = parseFloat(Number(countriesNam.value.usd.inverseRate).toFixed(3))
+      console.log(inverseRate.value)
       selectedCountry.value = countriesNam.value.usd.code
     } catch (e) {
       // loading.value = false;
@@ -34,7 +35,6 @@ export const userateStore = defineStore('counter', () => {
     console.log(lowerCaseCountryName)
     const countryData = countriesNam.value[lowerCaseCountryName];
     inverseRate.value = countryData.inverseRate
-    console.log(inverseRate.value)
     // console.log(countriesNam.value)
   }
 

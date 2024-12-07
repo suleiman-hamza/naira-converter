@@ -2,7 +2,7 @@
 
 Naira-X is a straightforward Naira converter designed to simplify currency conversions for Nigerians. It allows you to quickly convert Naira to various international currencies, including `US Dollars (USD)`, `Euros (EUR)`, `British Pounds (GBP)`, and more.
 
-Convert Naira to foreign currencies for travel, online shopping, or international transfers. A simple, no-frills tool that focused solely on currency conversion. Using the latest `vue3`, `vite`, `TypeScript` and other mainstream technology development.
+A simple, no-frills tool that focused solely on currency conversion. Using the latest `vue3`, `vite`, `TypeScript` and other mainstream technology development.
 
 
 **Welcome to the Currency Converter Project!**

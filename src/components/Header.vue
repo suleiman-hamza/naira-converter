@@ -14,7 +14,4 @@ import CountriesModal from "../components/Modal/CoutriesModal.vue";
 </script>
 
 <style scoped>
-/* nav {
-  border: 1px solid red; 
-} */
 </style>

@@ -37,7 +37,14 @@ const handleClick = (countrycode: string) => {
   <Dialog v-model:open="store.isOpen" >
     <DialogTrigger as-child>
       <Skeleton class="h-8 w-20 rounded-xl" v-if="store.loadSkeleton" />
-      <Button variant="outline" v-else-if="store.loadSkeleton === false" @click="store.isOpen = true" class="bg-stone-950 hover:bg-stone-900 hover:text-neutral-200 border-green-600">
+      <Button variant="outline" v-else-if="store.loadSkeleton === false" @click="store.isOpen = true" class="flex bg-stone-950 hover:bg-stone-900 hover:text-neutral-200 border-green-600">
+        <span>
+          <img
+            :src="`https://flagcdn.com/w40/${store.selectedCountry}.toLowerCase().png`"
+            alt="flag"
+            class="rounded-full w-4 h-4"
+          />
+          </span>
         {{ store.selectedCountry }}
       </Button>
     </DialogTrigger>

@@ -35,12 +35,12 @@ const showchart = ref(true)
 </script>
 
 <template>
-	<div class="alert relative rounded-lg border px-4 py-3 text-sm max-w-xs mx-auto">
+	<div class="relative rounded-lg border border-gray-600 px-4 py-3 text-sm max-w-xs mx-auto">
 		<div className='flex space-y-4 flex-col items-center justify-center' v-if="showchart === false">
 			<!-- <ExclamationTriangleIcon className='h-[30px] w-[30px] ' /> -->
 			<h2 className='text-xl '>Historic chart failed to load</h2>
 			<Button variant='destructive' @click="console.log('historical chart failed to load')">Retry</Button>
 		</div>
-		<AreaChart :data="data" index="name" :categories="['total', 'predicted']" :show-grid-line="false" class="h-[300px] w-[300px]" v-else />
+		<AreaChart :data="data" index="name" :categories="['total', 'predicted']" :show-grid-line="false" class="h-[400px] w-[300px]" v-else />
 	</div> 
 </template>

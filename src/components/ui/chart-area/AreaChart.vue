@@ -85,8 +85,9 @@ function handleLegendItemClick(d: BulletLegendItemInterface, i: number) {
         <VisArea
           :x="(d: Data, i: number) => i"
           :y="(d: Data) => d[category]"
-          color="auto"
+          color="#19cb9a"
           :curve-type="curveType"
+          :minHeight1Px="true"
           :attributes="{
             [Area.selectors.area]: {
               fill: `url(#${chartRef}-color-${i})`,
@@ -98,6 +99,7 @@ function handleLegendItemClick(d: BulletLegendItemInterface, i: number) {
 
       <template v-for="(category, i) in categories" :key="category">
         <VisLine
+          :lineWidth="2"
           :x="(d: Data, i: number) => i"
           :y="(d: Data) => d[category]"
           :color="colors[i]"

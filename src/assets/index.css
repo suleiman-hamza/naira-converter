@@ -79,6 +79,11 @@
   }
 }
 
+.custom-area {
+  --vis-area-fill-opacity: 0.5;
+  --vis-area-stroke-width: 1px;
+}
+
 @layer base {
   * {
     @apply border-border;

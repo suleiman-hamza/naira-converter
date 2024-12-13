@@ -1,8 +1,7 @@
 <script lang="ts" setup>
-import { computed, ref, reactive } from "vue";
-import { onMounted } from "vue";
-import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
+import {onMounted} from "vue";
+import {Button} from "@/components/ui/button";
+import {Skeleton} from "@/components/ui/skeleton";
 import {
   Dialog,
   DialogContent,
@@ -11,9 +10,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "../ui/input";
-import { currencyToCountryMap } from "@/data";
-import { userateStore } from "@/stores/useRateStore";
+import {Input} from "../ui/input";
+import {currencyToCountryMap} from "@/data";
+import {userateStore} from "@/stores/useRateStore";
+
 const store = userateStore();
 
 onMounted(()=> {
@@ -36,8 +36,8 @@ const handleClick = (countrycode: string) => {
 <template>
   <Dialog v-model:open="store.isOpen" >
     <DialogTrigger as-child>
-      <Skeleton class="h-8 w-20 rounded-xl" v-if="store.loadSkeleton" />
-      <Button variant="outline" v-else-if="store.loadSkeleton === false" @click="store.isOpen = true" class="flex bg-stone-950 hover:bg-stone-900 hover:text-neutral-200 border-green-600">
+      <Skeleton v-if="store.loadSkeleton" class="h-8 w-20 rounded-xl" />
+      <Button v-else-if="store.loadSkeleton === false" class="flex bg-stone-950 hover:bg-stone-900 hover:text-neutral-200 border-green-600" variant="outline" @click="store.isOpen = true">
         <span>
           <img
             :src="`https://flagcdn.com/w40/${store.selectedCountry}.toLowerCase().png`"
@@ -59,7 +59,7 @@ const handleClick = (countrycode: string) => {
         <div class="my-2">
           <Input
             v-model="store.searchQuery"
-            class="max-w-4xl"
+            class="max-w-4xl bg-stone-900 border-gray-500"
             placeholder="Search for Currency..."
             type="text"
           />

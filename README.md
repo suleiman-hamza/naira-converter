@@ -1,8 +1,8 @@
 ## Naira-X: Your Simple Naira Converter
 
-Naira-X is a straightforward Naira converter designed to simplify currency conversions for Nigerians. It allows you to quickly convert Naira to various international currencies, including `US Dollars (USD)`, `Euros (EUR)`, `British Pounds (GBP)`, and more.
+Naira-X is a straightforward Naira converter designed to simplify currency conversions for Nigerians. A simple, no-frills tool that focuses solely on currency conversion. Quickly convert Naira to various international currencies, like `USD`, `EUR`, `GBP`, and more.
 
-A simple, no-frills tool that focused solely on currency conversion. Using the latest `vue3`, `vite`, `TypeScript` and other mainstream technology development.
+ Using the latest `Vue3`, `Vite`, `TypeScript` and other mainstream technology for development. It comes with chart history for all available currencies.
 
 
 **Welcome to the Currency Converter Project!**

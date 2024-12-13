@@ -3,36 +3,56 @@ import { ref } from 'vue';
 import Button from '../ui/button/Button.vue';
 import { AreaChart } from '@/components/ui/chart-area';
 
+// this will be passed from the store or modal
 interface Props {
 	history: HistoricalCurrency30Days
 	country: string
 }
 
+// history
 interface HistoricalCurrency30Days {
-	data: HistoricalCurrencyDate[]
+	data: HistoricalCurrencyData[]
 	lastUpdated: string
 }
 
-interface HistoricalCurrencyDate {
+// history.data
+interface HistoricalCurrencyData {
 	rates: HistoricalCurrency[]
 	date: string
 }
 
+//rates array of abject
 interface HistoricalCurrency {
 	targetCurrency: string
 	exchangeRate: number
 }
 
-// const historyChartData = getHistoryByCurrency(history, country)
+const HISTORY_URL = 'https://kayla_lin-getyenpriceblob.web.val.run'
 
-// const data = [
-//   { name: 'Jan', predicted: 200, total: 100 },
-//   { name: 'Feb', predicted: 600, total: 600 },
-//   { name: 'Mar', predicted: 400, total: 450 },
-//   { name: 'Apr', predicted: 700, total: 300 },
-//   { name: 'May', predicted: 500, total: 900 },
-//   { name: 'June', predicted: 300, total: 200 }
-// ]
+async function getHistory() {
+	try {
+		const res = await fetch(HISTORY_URL)
+		const history: HistoricalCurrency30Days = await res.json()
+		getHistoryByCurrency(history, 'aud')
+	} catch (e) {
+		console.error('error while fetching', e)
+	}
+}
+
+// const historyChartData = getHistoryByCurrency(history, country)
+function getHistoryByCurrency(history: HistoricalCurrency30Days, country: string) {
+	const currency = history.data.map((day) => {
+		return {
+			date: new Date().getTime(),
+			value: day.rates.find((history) => {
+				return history.targetCurrency === country.toLocaleUpperCase()
+			})?.exchangeRate
+		}
+	})
+
+	console.log(currency)
+}
+
 const data = [
   { name: 'Jan', total: 100 },
   { name: 'Feb', total: 600 },
@@ -56,5 +76,6 @@ const showchart = ref(true)
 			<Button variant='destructive' @click="console.log('historical chart failed to load')">Retry</Button>
 		</div>
 		<AreaChart :data="data" index="name" :categories="['total']" :show-grid-line="false" class="h-[400px] w-[300px] custom-area" v-else />
+		<Button @click="getHistory">Fetch History</Button>
 	</div> 
 </template>

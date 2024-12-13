@@ -40,7 +40,7 @@ const handleClick = (countrycode: string) => {
       <Button v-else-if="store.loadSkeleton === false" class="flex bg-stone-950 hover:bg-stone-900 hover:text-neutral-200 border-green-600" variant="outline" @click="store.isOpen = true">
         <span>
           <img
-            :src="`https://flagcdn.com/w40/${store.selectedCountry}.toLowerCase().png`"
+            :src="`https://flagcdn.com/w40/cn.png`"
             alt="flag"
             class="rounded-full w-4 h-4"
           />

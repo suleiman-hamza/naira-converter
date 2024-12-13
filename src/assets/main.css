@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+ @apply bg-stone-900 text-white;
+}
+
 #app {
   max-width: 1280px;
   margin: 0 auto;

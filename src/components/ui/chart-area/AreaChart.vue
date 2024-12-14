@@ -115,7 +115,7 @@ function handleLegendItemClick(d: BulletLegendItemInterface, i: number) {
       <VisAxis
         v-if="showXAxis"
         type="x"
-        :tick-format="xFormatter ?? ((v: number) => data[v]?.[index])"
+        :tick-format="xFormatter ?? ((v: any) => data[v]?.[index])"
         :grid-line="false"
         :tick-line="false"
         tick-text-color="hsl(var(--vis-text-color))"

@@ -1,7 +1,16 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import Button from '../ui/button/Button.vue';
 import { AreaChart } from '@/components/ui/chart-area';
+import { Import } from 'lucide-vue-next';
+
+onMounted(() => {
+	getHistory();
+})
+
+let chartHistory: any = ref([])
+const historyl: any = ref([])
+const loading = ref(false);
 
 // this will be passed from the store or modal
 interface Props {
@@ -31,26 +40,29 @@ const HISTORY_URL = 'https://kayla_lin-getyenpriceblob.web.val.run'
 
 async function getHistory() {
 	try {
+		loading.value = true;
 		const res = await fetch(HISTORY_URL)
-		const history: HistoricalCurrency30Days = await res.json()
-		getHistoryByCurrency(history, 'aud')
+		historyl.value = await res.json()
+		chartHistory.value = await getHistoryByCurrency(historyl.value, 'aud')
 	} catch (e) {
 		console.error('error while fetching', e)
+	} finally {
+		loading.value = false;
 	}
 }
 
-// const historyChartData = getHistoryByCurrency(history, country)
-function getHistoryByCurrency(history: HistoricalCurrency30Days, country: string) {
+
+async function getHistoryByCurrency(history: HistoricalCurrency30Days, country: string) {
 	const currency = history.data.map((day) => {
 		return {
-			date: new Date().getTime(),
+			date: new Date(day.date).getTime(),
 			value: day.rates.find((history) => {
 				return history.targetCurrency === country.toLocaleUpperCase()
 			})?.exchangeRate
 		}
 	})
 
-	console.log(currency)
+	return currency
 }
 
 const data = [
@@ -75,7 +87,8 @@ const showchart = ref(true)
 			<h2 className='text-xl '>Historic chart failed to load</h2>
 			<Button variant='destructive' @click="console.log('historical chart failed to load')">Retry</Button>
 		</div>
-		<AreaChart :data="data" index="name" :categories="['total']" :show-grid-line="false" class="h-[400px] w-[300px] custom-area" v-else />
+		<AreaChart :data="chartHistory" index="name" :categories="['value', 'date']" :show-grid-line="false" class="h-[400px] w-[300px] custom-area" v-else />
 		<Button @click="getHistory">Fetch History</Button>
+		<p>{{ chartHistory }}</p>
 	</div> 
 </template>

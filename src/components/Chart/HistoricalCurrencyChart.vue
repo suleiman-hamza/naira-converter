@@ -56,7 +56,7 @@ async function getHistory() {
 async function getHistoryByCurrency(history: HistoricalCurrency30Days, country: string) {
 	const currency = history.data.map((day) => {
 		return {
-			date: new Date(day.date).toISOString(),
+			date: new Date(day.date).toUTCString(),
 			value: day.rates.find((history) => {
 				return history.targetCurrency === country.toLocaleUpperCase()
 			})?.exchangeRate
@@ -88,7 +88,7 @@ const showchart = ref(true)
 			<h2 className='text-xl '>Historic chart failed to load</h2>
 			<Button variant='destructive' @click="console.log('historical chart failed to load')">Retry</Button>
 		</div>
-		<AreaChart :data="chartHistory" index="name" :categories="['value', 'date']" :show-grid-line="false" class="h-[400px] w-[300px] custom-area" v-else />
+		<AreaChart :data="chartHistory" index="date" :categories="['value', 'date']" :show-grid-line="false" class="h-[400px] w-[300px] custom-area" v-else />
 		<Button @click="getHistory">Fetch History</Button>
 		<p>{{ chartHistory }}</p>
 	</div> 

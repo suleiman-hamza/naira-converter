@@ -46,6 +46,7 @@ async function getHistory() {
 		chartHistory.value = await getHistoryByCurrency(historyl.value, 'aud')
 	} catch (e) {
 		console.error('error while fetching', e)
+		showchart.value = false
 	} finally {
 		loading.value = false;
 	}
@@ -55,7 +56,7 @@ async function getHistory() {
 async function getHistoryByCurrency(history: HistoricalCurrency30Days, country: string) {
 	const currency = history.data.map((day) => {
 		return {
-			date: new Date(day.date).getTime(),
+			date: new Date(day.date).toISOString(),
 			value: day.rates.find((history) => {
 				return history.targetCurrency === country.toLocaleUpperCase()
 			})?.exchangeRate

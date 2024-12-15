@@ -90,6 +90,6 @@ const showchart = ref(true)
 		</div>
 		<AreaChart :data="chartHistory" index="date" :categories="['date', 'value']" :show-grid-line="true" class="custom-area h-[200px]" v-else />
 	</div>
-	// use this to show history data
+	<!-- use this to show history data -->
 	<!-- <p>{{ chartHistory }}</p>  -->
 </template>

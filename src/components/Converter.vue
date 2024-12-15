@@ -39,7 +39,7 @@ watch(localizedAmount, (newVal2) => {
     <Skeleton v-if="store.loadSkeleton" class="h-80 w-full rounded-xl max-w-xs mx-auto mb-8" />
         <Card v-else-if="store.loadSkeleton === false" class="max-w-xs mx-auto mb-8 bg-stone-900 border-gray-600">
             <CardHeader class="p-4">
-            <CardTitle class="text-white text-sm">Currency Converter</CardTitle>
+            <CardTitle class="text-white text-lg">Currency Converter</CardTitle>
 
             <CardDescription>Convert Nigerian NGN to {{ store.selectedCountry }}</CardDescription>
             </CardHeader>

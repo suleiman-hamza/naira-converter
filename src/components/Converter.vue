@@ -78,19 +78,4 @@ watch(localizedAmount, (newVal2) => {
         </Card>
 </template>
 <style scoped>
-.con {
-    padding: 1rem;
-    border: 1px solid grey;
-    border-radius: 10px;
-    margin-top: 1rem;
-}
-h2 {
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-}
-#ngn-currency {
-    width: 40px;
-    color: black;
-    margin-bottom: 0.5rem;
-}
 </style>

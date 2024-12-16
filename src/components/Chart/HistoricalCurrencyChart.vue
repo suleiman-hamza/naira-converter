@@ -2,7 +2,6 @@
 import { ref, onMounted } from 'vue';
 import Button from '../ui/button/Button.vue';
 import { AreaChart } from '@/components/ui/chart-area';
-import { Import } from 'lucide-vue-next';
 
 onMounted(() => {
 	getHistory();
@@ -13,10 +12,10 @@ const historyl: any = ref([])
 const loading = ref(false);
 
 // this will be passed from the store or modal
-interface Props {
-	history: HistoricalCurrency30Days
-	country: string
-}
+// interface Props {
+// 	history: HistoricalCurrency30Days
+// 	country: string
+// }
 
 // history
 interface HistoricalCurrency30Days {

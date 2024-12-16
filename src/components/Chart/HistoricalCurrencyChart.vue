@@ -65,30 +65,15 @@ async function getHistoryByCurrency(history: HistoricalCurrency30Days, country: 
 	return currency
 }
 
-const data = [
-  { name: 'Jan', total: 100 },
-  { name: 'Feb', total: 600 },
-  { name: 'Mar', total: 450 },
-  { name: 'Apr', total: 230 },
-  { name: 'May', total: 100 },
-  { name: 'Jun', total: 10 },
-  { name: 'Jul', total: 248 },
-  { name: 'Aug', total: 450 },
-  { name: 'Sep', total: 300 },
-  { name: 'Oct', total: 579 }
-]
-
 const showchart = ref(true)
 </script>
 
 <template>
 	<div class="relative rounded-lg border border-gray-600 px-4 py-3 text-sm max-w-xs mx-auto">
-		<div className='flex space-y-4 flex-col items-center justify-center' v-if="showchart === false">
+		<div v-if="showchart === false" class='flex space-y-4 flex-col items-center justify-center'>
 			<h2 className='text-xl '>Historic chart failed to load</h2>
 			<Button variant='destructive' @click="getHistory">Retry</Button>
 		</div>
-		<AreaChart :data="chartHistory" index="date" :categories="['date', 'value']" :show-grid-line="true" class="custom-area h-[200px]" v-else />
+		<AreaChart v-else :data="chartHistory" index="date" :categories="['date', 'value']" :show-grid-line="true" class="custom-area h-[250px]" />
 	</div>
-	<!-- use this to show history data -->
-	<!-- <p>{{ chartHistory }}</p>  -->
 </template>

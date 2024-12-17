@@ -4,10 +4,10 @@ import axios from "axios";
 
 export const userateStore = defineStore('counter', () => {
   const countriesNam = ref<{ [key: string]: any }>({});
-  // const defaultCountry = ref();
   const selectedCountry = ref();
   const inverseRate = ref();
   const searchQuery = ref("");
+  
   const isOpen = ref(false);
   const loadSkeleton = ref(false)
 

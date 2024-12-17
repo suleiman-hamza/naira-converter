@@ -87,7 +87,6 @@ function handleLegendItemClick(d: BulletLegendItemInterface, i: number) {
           :y="(d: Data) => d[category]"
           color="#19cb9a"
           :curve-type="curveType"
-          :minHeight1Px="true"
           :attributes="{
             [Area.selectors.area]: {
               fill: `url(#${chartRef}-color-${i})`,
@@ -115,9 +114,10 @@ function handleLegendItemClick(d: BulletLegendItemInterface, i: number) {
       <VisAxis
         v-if="showXAxis"
         type="x"
-        :tick-format="xFormatter ?? ((v: number) => data[v]?.[index])"
+        :tick-format="xFormatter ?? ((v: any) => data[v]?.[index])"
         :grid-line="false"
         :tick-line="false"
+        label="Past Date Here"
         tick-text-color="hsl(var(--vis-text-color))"
       />
       <VisAxis
@@ -126,6 +126,7 @@ function handleLegendItemClick(d: BulletLegendItemInterface, i: number) {
         :tick-line="false"
         :tick-format="yFormatter"
         :domain-line="false"
+        label="Past Rate Here"
         :grid-line="showGridLine"
         :attributes="{
           [Axis.selectors.grid]: {

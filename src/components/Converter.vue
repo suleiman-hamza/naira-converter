@@ -22,7 +22,8 @@ function clearInputs() {
 }
 
 watch(ngnInitialAmount, (newValue1) => {
-    localizedAmount.value = parseFloat((newValue1 / store.inverseRate).toFixed(2))
+    // localizedAmount.value = parseFloat((newValue1 / store.inverseRate).toFixed(2))
+    localizedAmount.value = newValue1 * store.rate
 })
 
 watch(localizedAmount, (newVal2) => {

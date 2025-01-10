@@ -68,7 +68,7 @@ watch(localizedAmount, (newVal2) => {
                             </svg>
                         <div class="flex-1 space-y-1">
                             <p class="text-sm font-medium flex gap-1 items-center">
-                                1 Naira = {{ store.inverseRate }} {{ store.selectedCountry }}
+                                1 Naira = {{ store.rate }} {{ store.selectedCountry }}
                             </p>
                         </div>
                     </div>

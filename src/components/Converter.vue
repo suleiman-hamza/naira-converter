@@ -14,6 +14,7 @@ const store = userateStore();
 
 const ngnInitialAmount: Ref<number> = ref(0);
 const localizedAmount: Ref<number> = ref(0);
+// const roundedRate = ref(0) // remove later
 
 function clearInputs() {
     ngnInitialAmount.value = 0;
@@ -27,6 +28,7 @@ watch(ngnInitialAmount, (newValue1) => {
 watch(localizedAmount, (newVal2) => {
     ngnInitialAmount.value = parseFloat((newVal2 * store.inverseRate).toFixed(2))
 })
+
 //issues
 // converter does not re-caculate values in the input after selcting a diffrent country
 // rounding up values in the input
@@ -68,7 +70,7 @@ watch(localizedAmount, (newVal2) => {
                             </svg>
                         <div class="flex-1 space-y-1">
                             <p class="text-sm font-medium flex gap-1 items-center">
-                                1 Naira = {{ store.rate }} {{ store.selectedCountry }}
+                                1 Naira = {{ store.roundedRate }} {{ store.selectedCountry }}
                             </p>
                         </div>
                     </div>

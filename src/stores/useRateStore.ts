@@ -6,7 +6,7 @@ export const userateStore = defineStore('counter', () => {
   const countryCurrencyList = ref<{ [key: string]: any }>({});
   const selectedCountry = ref();
   const inverseRate = ref();
-  const rate = ref();
+  const rate = ref(0);
   const searchQuery = ref("");
   
   const isOpen = ref(false);
@@ -23,6 +23,7 @@ export const userateStore = defineStore('counter', () => {
       rate.value = countryCurrencyList.value.usd.rate
       console.log(rate.value)
       selectedCountry.value = countryCurrencyList.value.usd.code
+      console.log(roundedRate.value)
     } catch (e) {
       // loading.value = false;
       console.error("Error Fetching Data:", e);
@@ -32,23 +33,15 @@ export const userateStore = defineStore('counter', () => {
   };
 
   // round very small value to two significant figure
-  // function roundToSignificantFigures(num, sigFigs) {
+  // function toSignificantFigures(num: number, sigFigs: number): number {
   //   if (num === 0) return 0;
-  
-  //   const numString = num.toExponential();
-  //   const [mantissa, exponent] = numString.split('e');
-  
-  //   const roundedMantissa = Number(mantissa).toFixed(sigFigs - 1);
-  
-  //   return Number(`${roundedMantissa}e${exponent}`);
+  //   const multiplier = Math.pow(10, sigFigs - Math.floor(Math.log10(Math.abs(num))) - 1);
+  //   return Math.round(num * multiplier) / multiplier;
   // }
-  
-  // const value = 0.00065155917700078;
-  // const roundedValue = roundToSignificantFigures(value, 2);
-  
-  // console.log("Original value:", value);
-  // console.log("Rounded value:", roundedValue); // Output: 0.00065
-
+  const roundedRate = computed(() => {
+    const multiplier = Math.pow(10, 2 - Math.floor(Math.log10(Math.abs(rate.value))) - 1);
+    return Math.round(rate.value * multiplier) / multiplier;
+  })
 
   const getcountryRate = (countryName: string) => {
     const lowerCaseCountryName = countryName.toLowerCase();
@@ -58,6 +51,8 @@ export const userateStore = defineStore('counter', () => {
     // console.log(countryData);
     inverseRate.value = countryData.inverseRate; // sets the inverse-rate of converter to the currently selected country
     rate.value = countryData.rate; // sets the rate of converter to the currently selected country
+    console.log(rate.value)
+    console.log(roundedRate.value)
   }
 
   const filteredCountries = computed(() => {
@@ -75,6 +70,7 @@ export const userateStore = defineStore('counter', () => {
     loadSkeleton,
     inverseRate, 
     rate, 
+    roundedRate,
     selectedCountry, 
     countryCurrencyList, 
     searchQuery, 

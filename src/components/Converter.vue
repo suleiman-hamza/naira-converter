@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type {Ref} from 'vue'
-import {ref, watch} from 'vue';
+import {computed, ref, watch} from 'vue';
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle,} from '@/components/ui/card';
 
 import {Skeleton} from "@/components/ui/skeleton";
@@ -21,14 +21,54 @@ function clearInputs() {
     localizedAmount.value = 0;
 }
 
-watch(ngnInitialAmount, (newValue1) => {
-    // localizedAmount.value = parseFloat((newValue1 / store.inverseRate).toFixed(2))
-    localizedAmount.value = newValue1 * store.rate
+// watch(ngnInitialAmount, (newValue1) => {
+//     // localizedAmount.value = parseFloat((newValue1 / store.inverseRate).toFixed(2))
+//     localizedAmount.value = newValue1 * store.rate
+// })
+
+// watch(localizedAmount, (newVal2) => {
+//     ngnInitialAmount.value = parseFloat((newVal2 * store.inverseRate).toFixed(2))
+// })
+
+const loc = computed({
+    get() {
+        // Getter: Calculates the dollar amount based on the naira amount and the exchange rate.
+        return parseFloat((ngnInitialAmount.value / store.inverseRate).toFixed(2))
+    },
+    set(value) {
+        // Setter: Updates the naira amount based on the provided dollar amount and the exchange rate.
+        return ngnInitialAmount.value = parseFloat((value * store.inverseRate).toFixed(2))
+    }
 })
 
-watch(localizedAmount, (newVal2) => {
-    ngnInitialAmount.value = parseFloat((newVal2 * store.inverseRate).toFixed(2))
+const ngn = computed({
+    get() {
+        return parseFloat((localizedAmount.value * store.inverseRate).toFixed(2))
+    },
+    set(value) {
+        return localizedAmount.value = parseFloat((value / store.inverseRate).toFixed(2))
+    }
 })
+
+watch(ngnInitialAmount, (newValue) => {
+  localizedAmount.value = newValue / store.inverseRate
+})
+
+watch(localizedAmount, (newValue) => {
+  ngnInitialAmount.value = newValue * store.inverseRate
+})
+
+function handleLocUpdate(event: Event) {
+    const target = event.target as HTMLInputElement;
+    localizedAmount.value = parseFloat(target.value);
+    // console.log(event.target.value)
+}
+
+function handleNgnUpdate(event: Event) {
+    const target = event.target as HTMLInputElement;
+    ngnInitialAmount.value = parseFloat(target.value);
+    // console.log(event.target.value)
+}
 
 //issues
 // converter does not re-caculate values in the input after selcting a diffrent country
@@ -49,11 +89,11 @@ watch(localizedAmount, (newVal2) => {
                     <div class="flex flex-col space-y-1.5">
 
                         <Label class="text-white" for="ngn">NGN</Label>
-                        <Input id="ngn" v-model="ngnInitialAmount" class="bg-stone-900 border-gray-500 w-full" type="number"/>
+                        <Input id="ngn" @input="handleNgnUpdate" v-model="ngnInitialAmount" class="bg-stone-900 border-gray-500 w-full" type="number"/>
                     </div>
                     <div class="flex flex-col space-y-1.5">
                         <Label class="text-white" for="for">{{ store.selectedCountry }}</Label>
-                        <Input id="for" v-model="localizedAmount" class="bg-stone-900 border-gray-500 w-full" type="number"/>
+                        <Input id="for" @input="handleLocUpdate" v-model="localizedAmount" class="bg-stone-900 border-gray-500 w-full" type="number"/>
                     </div>
                 </div>
                 <div class="flex flex-col space-y-1.5 mb-4">

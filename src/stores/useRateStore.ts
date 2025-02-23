@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 import axios from "axios";
 
 export const userateStore = defineStore('counter', () => {
+  
   const countryCurrencyList = ref<{ [key: string]: any }>({});
   const selectedCountry = ref();
   const inverseRate = ref();

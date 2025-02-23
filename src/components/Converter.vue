@@ -70,6 +70,10 @@ function handleNgnUpdate(event: Event) {
     // console.log(event.target.value)
 }
 
+
+// try watchEffects for reactive dependencies tracking
+// use rounded rate inside the watch function
+
 //issues
 // converter does not re-caculate values in the input after selcting a diffrent country
 // rounding up values in the input

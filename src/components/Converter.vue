@@ -30,45 +30,13 @@ function clearInputs() {
 //     ngnInitialAmount.value = parseFloat((newVal2 * store.inverseRate).toFixed(2))
 // })
 
-const loc = computed({
-    get() {
-        // Getter: Calculates the dollar amount based on the naira amount and the exchange rate.
-        return parseFloat((ngnInitialAmount.value / store.inverseRate).toFixed(2))
-    },
-    set(value) {
-        // Setter: Updates the naira amount based on the provided dollar amount and the exchange rate.
-        return ngnInitialAmount.value = parseFloat((value * store.inverseRate).toFixed(2))
-    }
-})
-
-const ngn = computed({
-    get() {
-        return parseFloat((localizedAmount.value * store.inverseRate).toFixed(2))
-    },
-    set(value) {
-        return localizedAmount.value = parseFloat((value / store.inverseRate).toFixed(2))
-    }
-})
-
 watch(ngnInitialAmount, (newValue) => {
-  localizedAmount.value = newValue / store.inverseRate
+  localizedAmount.value = newValue / store.rate
 })
 
 watch(localizedAmount, (newValue) => {
   ngnInitialAmount.value = newValue * store.inverseRate
 })
-
-function handleLocUpdate(event: Event) {
-    const target = event.target as HTMLInputElement;
-    localizedAmount.value = parseFloat(target.value);
-    // console.log(event.target.value)
-}
-
-function handleNgnUpdate(event: Event) {
-    const target = event.target as HTMLInputElement;
-    ngnInitialAmount.value = parseFloat(target.value);
-    // console.log(event.target.value)
-}
 
 
 // try watchEffects for reactive dependencies tracking
@@ -93,11 +61,11 @@ function handleNgnUpdate(event: Event) {
                     <div class="flex flex-col space-y-1.5">
 
                         <Label class="text-white" for="ngn">NGN</Label>
-                        <Input id="ngn" @input="handleNgnUpdate" v-model="ngnInitialAmount" class="bg-stone-900 border-gray-500 w-full" type="number"/>
+                        <Input id="ngn" v-model="ngnInitialAmount" class="bg-stone-900 border-gray-500 w-full" type="number"/>
                     </div>
                     <div class="flex flex-col space-y-1.5">
                         <Label class="text-white" for="for">{{ store.selectedCountry }}</Label>
-                        <Input id="for" @input="handleLocUpdate" v-model="localizedAmount" class="bg-stone-900 border-gray-500 w-full" type="number"/>
+                        <Input id="for" v-model="localizedAmount" class="bg-stone-900 border-gray-500 w-full" type="number"/>
                     </div>
                 </div>
                 <div class="flex flex-col space-y-1.5 mb-4">

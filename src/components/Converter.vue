@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type {Ref} from 'vue'
-import {computed, ref, watch} from 'vue';
+import {computed, ref, watch, watchEffect} from 'vue';
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle,} from '@/components/ui/card';
 
 import {Skeleton} from "@/components/ui/skeleton";
@@ -14,29 +14,47 @@ const store = userateStore();
 
 const ngnInitialAmount: Ref<number> = ref(0);
 const localizedAmount: Ref<number> = ref(0);
-// const roundedRate = ref(0) // remove later
+
+const UsdToNgn = computed<number>({
+    get: () => {
+        return;
+    },
+    set: (value) => {
+        return value;
+    }
+})
+const NgnToUsd = computed<number>({
+    get: () => {
+        return;
+    },
+    set: (value) => {
+        return value;
+    }
+})
 
 function clearInputs() {
     ngnInitialAmount.value = 0;
     localizedAmount.value = 0;
 }
 
-// watch(ngnInitialAmount, (newValue1) => {
-//     // localizedAmount.value = parseFloat((newValue1 / store.inverseRate).toFixed(2))
-//     localizedAmount.value = newValue1 * store.rate
-// })
 
-// watch(localizedAmount, (newVal2) => {
-//     ngnInitialAmount.value = parseFloat((newVal2 * store.inverseRate).toFixed(2))
-// })
-
-watch(ngnInitialAmount, (newValue) => {
-  localizedAmount.value = newValue / store.rate
+watch(UsdToNgn, (newValue) => {
+  localizedAmount.value = newValue * store.roundedRate
 })
 
-watch(localizedAmount, (newValue) => {
-  ngnInitialAmount.value = newValue * store.inverseRate
+watch(NgnToUsd, (newValue) => {
+  ngnInitialAmount.value = newValue / store.roundedRate
 })
+// remove later
+
+/*watchEffect(() => {
+    localizedAmount.value = ngnInitialAmount.value * store.roundedRate
+})
+
+watchEffect(() => {
+  ngnInitialAmount.value = localizedAmount.value / store.roundedRate
+})
+*/
 
 
 // try watchEffects for reactive dependencies tracking
@@ -61,11 +79,11 @@ watch(localizedAmount, (newValue) => {
                     <div class="flex flex-col space-y-1.5">
 
                         <Label class="text-white" for="ngn">NGN</Label>
-                        <Input id="ngn" v-model="ngnInitialAmount" class="bg-stone-900 border-gray-500 w-full" type="number"/>
+                        <Input id="ngn" v-model="UsdToNgn" class="bg-stone-900 border-gray-500 w-full" type="number"/>
                     </div>
                     <div class="flex flex-col space-y-1.5">
                         <Label class="text-white" for="for">{{ store.selectedCountry }}</Label>
-                        <Input id="for" v-model="localizedAmount" class="bg-stone-900 border-gray-500 w-full" type="number"/>
+                        <Input id="for" v-model="NgnToUsd" class="bg-stone-900 border-gray-500 w-full" type="number"/>
                     </div>
                 </div>
                 <div class="flex flex-col space-y-1.5 mb-4">

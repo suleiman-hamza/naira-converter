@@ -18,13 +18,16 @@ export const userateStore = defineStore('counter', () => {
       loadSkeleton.value = true;
       const res = await axios.get("https://www.floatrates.com/daily/ngn.json");
       countryCurrencyList.value = res.data;
-      console.log(countryCurrencyList.value);
-      inverseRate.value = parseFloat(Number(countryCurrencyList.value.usd.inverseRate).toFixed(2))
-      console.log(inverseRate.value)
+      console.log(countryCurrencyList.value); //curency data json
+
+      inverseRate.value = countryCurrencyList.value.usd.inverseRate;
+      console.log(inverseRate.value) //inverse rate
+
       rate.value = countryCurrencyList.value.usd.rate
-      console.log(rate.value)
+      console.log(rate.value) // rate
+
       selectedCountry.value = countryCurrencyList.value.usd.code
-      console.log(roundedRate.value)
+      console.log(roundedRate.value) // rounded rate
     } catch (e) {
       // loading.value = false;
       console.error("Error Fetching Data:", e);

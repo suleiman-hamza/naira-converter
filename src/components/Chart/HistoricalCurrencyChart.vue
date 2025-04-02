@@ -69,6 +69,7 @@ const showchart = ref(true)
 </script>
 
 <template>
+	<p class="text-sm max-w-xs mx-auto text-red-500">Comming soon <span class="text-white">(Under Development)</span></p>
 	<div class="relative rounded-lg border border-gray-600 px-4 py-3 text-sm max-w-xs mx-auto">
 		<div v-if="showchart === false" class='flex space-y-4 flex-col items-center justify-center'>
 			<h2 className='text-xl '>Historic chart failed to load</h2>

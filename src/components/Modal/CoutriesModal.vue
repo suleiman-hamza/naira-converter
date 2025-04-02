@@ -34,7 +34,7 @@ const handleClick = (countrycode: string) => {
 </script>
 
 <template>
-  <Dialog v-model:open="store.isOpen" >
+  <Dialog v-model:open="store.isOpen">
     <DialogTrigger as-child>
       <Skeleton v-if="store.loadSkeleton" class="h-8 w-20 rounded-xl" />
       <Button v-else-if="store.loadSkeleton === false" class="flex bg-stone-950 hover:bg-stone-900 hover:text-neutral-200 border-green-600" variant="outline" @click="store.isOpen = true">

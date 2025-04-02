@@ -77,11 +77,11 @@ watchEffect(() => {
                     <div class="flex flex-col space-y-1.5">
 
                         <Label class="text-white" for="ngn">NGN</Label>
-                        <Input id="ngn" v-model="UsdToNgn" class="bg-stone-900 border-gray-500 w-full" type="number"/>
+                        <Input id="ngn" v-model="ngnInitialAmount" class="bg-stone-900 border-gray-500 w-full" type="number"/>
                     </div>
                     <div class="flex flex-col space-y-1.5">
                         <Label class="text-white" for="for">{{ store.selectedCountry }}</Label>
-                        <Input id="for" v-model="NgnToUsd" class="bg-stone-900 border-gray-500 w-full" type="number"/>
+                        <Input id="for" v-model="localizedAmount" class="bg-stone-900 border-gray-500 w-full" type="number"/>
                     </div>
                 </div>
                 <div class="flex flex-col space-y-1.5 mb-4">

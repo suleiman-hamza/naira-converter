@@ -4,7 +4,7 @@
       <router-link class="font-bold text-2xl" to="">Naira-X</router-link>
     </div>
     <div class="flex gap-2">
-      <Button variant="outline" size="icon" class="bg-stone-950 hover:bg-stone-900 hover:text-neutral-200 border-green-600">
+      <Button variant="outline" @click="" size="icon" class="bg-stone-950 hover:bg-stone-900 hover:text-neutral-200 border-green-600">
         <CircleHelp class="w-4 h-4" />
       </Button>
       <CountriesModal />
@@ -16,6 +16,7 @@
 import CountriesModal from "../components/Modal/CoutriesModal.vue";
 import { Button } from '@/components/ui/button';
 import { CircleHelp } from 'lucide-vue-next';
+import { useRouter } from 'vue-router';
 </script>
 
 <style scoped>

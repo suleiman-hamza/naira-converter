@@ -15,22 +15,20 @@ const store = userateStore();
 const ngnInitialAmount: Ref<number> = ref(0);
 const localizedAmount: Ref<number> = ref(0);
 
-const UsdToNgn = computed<number>({
-    get: () => {
-        return;
-    },
-    set: (value) => {
-        return value;
-    }
-})
-const NgnToUsd = computed<number>({
-    get: () => {
-        return;
-    },
-    set: (value) => {
-        return value;
-    }
-})
+// const UsdToNgn = computed<number>({
+//     get() => {
+//         return ngnInitialAmount.value
+//     },
+//     set(value) => {
+//     }
+// })
+// const NgnToUsd = computed<number>({
+//     get() {
+//         return localizedAmount.value;
+//     },
+//     set(value) => {
+//     }
+// })
 
 function clearInputs() {
     ngnInitialAmount.value = 0;
@@ -38,13 +36,13 @@ function clearInputs() {
 }
 
 
-watch(UsdToNgn, (newValue) => {
-  localizedAmount.value = newValue * store.roundedRate
-})
+// watch(UsdToNgn, (newValue) => {
+//   localizedAmount.value = newValue * store.roundedRate
+// })
 
-watch(NgnToUsd, (newValue) => {
-  ngnInitialAmount.value = newValue / store.roundedRate
-})
+// watch(NgnToUsd, (newValue) => {
+//   ngnInitialAmount.value = newValue / store.roundedRate
+// })
 // remove later
 
 /*watchEffect(() => {

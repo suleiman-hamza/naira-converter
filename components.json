@@ -5,14 +5,14 @@
   "tsConfigPath": "./tsconfig.json",
   "tailwind": {
     "config": "tailwind.config.js",
-    "css": "src/assets/index.css",
+    "css": "app/assets/index.css",
     "baseColor": "stone",
     "cssVariables": true,
     "prefix": ""
   },
   "framework": "vite",
   "aliases": {
-    "components": "@/components",
-    "utils": "@/lib/utils"
+    "components": "~/components",
+    "utils": "~/lib/utils"
   }
 }

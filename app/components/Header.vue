@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import CountriesModal from "../components/Modal/CoutriesModal.vue";
+import CountriesModal from "./Modal/CoutriesModal.vue";
 import { Button } from '@/components/ui/button';
 import { CircleHelp } from 'lucide-vue-next';
 </script>

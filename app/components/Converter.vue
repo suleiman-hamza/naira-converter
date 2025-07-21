@@ -1,59 +1,13 @@
 <script lang="ts" setup>
-// import type {Ref} from 'vue'
 import {computed, ref, watch, watchEffect} from 'vue';
-// import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle,} from '@/components/ui/card';
-
-// import {Skeleton} from "@/components/ui/skeleton";
-// import {Separator} from '@/components/ui/separator';
-// import Button from './ui/button/Button.vue';
-// import Input from './ui/input/Input.vue';
-// import Label from './ui/label/Label.vue';
-// import {userateStore} from '@/stores/useRateStore';
-
-// const store = userateStore();
 
 const ngnInitialAmount: Ref<number> = ref(0);
 const localizedAmount: Ref<number> = ref(0);
-
-// const UsdToNgn = computed<number>({
-//     get() => {
-//         return ngnInitialAmount.value
-//     },
-//     set(value) => {
-//     }
-// })
-// const NgnToUsd = computed<number>({
-//     get() {
-//         return localizedAmount.value;
-//     },
-//     set(value) => {
-//     }
-// })
 
 function clearInputs() {
     ngnInitialAmount.value = 0;
     localizedAmount.value = 0;
 }
-
-
-// watch(UsdToNgn, (newValue) => {
-//   localizedAmount.value = newValue * store.roundedRate
-// })
-
-// watch(NgnToUsd, (newValue) => {
-//   ngnInitialAmount.value = newValue / store.roundedRate
-// })
-// remove later
-
-/*watchEffect(() => {
-    localizedAmount.value = ngnInitialAmount.value * store.roundedRate
-})
-
-watchEffect(() => {
-  ngnInitialAmount.value = localizedAmount.value / store.roundedRate
-})
-*/
-
 
 // try watchEffects for reactive dependencies tracking
 // use rounded rate inside the watch function

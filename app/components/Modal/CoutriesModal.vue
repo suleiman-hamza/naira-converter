@@ -1,40 +1,43 @@
 <script lang="ts" setup>
 import {onMounted} from "vue";
-import {Button} from "@/components/ui/button";
-import {Skeleton} from "@/components/ui/skeleton";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import {Input} from "../ui/input";
-import {currencyToCountryMap} from "@/data";
-import {userateStore} from "@/stores/useRateStore";
+// import {Button} from "@/components/ui/button";
+// import {Skeleton} from "@/components/ui/skeleton";
+// import {
+//   Dialog,
+//   DialogContent,
+//   DialogDescription,
+//   DialogHeader,
+//   DialogTitle,
+//   DialogTrigger,
+// } from "@/components/ui/dialog";
+// import {Input} from "../ui/input";
+// import {currencyToCountryMap} from "@/data";
+// import {userateStore} from "@/stores/useRateStore";
 
-const store = userateStore();
+// const store = userateStore();
 
-onMounted(()=> {
-  store.fetchData();
+// onMounted(()=> {
+//   store.fetchData();
 
-})
+// })
 
-const getCountryCode = (currencyCode: string) => {
-  return currencyToCountryMap[currencyCode.toUpperCase()] || "";
-};
+// const getCountryCode = (currencyCode: string) => {
+//   return currencyToCountryMap[currencyCode.toUpperCase()] || "";
+// };
 
-const handleClick = (countrycode: string) => {
-  store.selectedCountry = countrycode;
-  store.getcountryRate(store.selectedCountry)
-  store.isOpen = false;
-};
+// const handleClick = (countrycode: string) => {
+//   store.selectedCountry = countrycode;
+//   store.getcountryRate(store.selectedCountry)
+//   store.isOpen = false;
+// };
 
 </script>
 
 <template>
-  <Dialog v-model:open="store.isOpen">
+  <NuxtLink to="/" class="bg-stone-950 hover:bg-stone-900 hover:text-neutral-200 border p-2 border-green-600">
+    Dialog Comp
+  </NuxtLink>
+  <!-- <Dialog v-model:open="store.isOpen">
     <DialogTrigger as-child>
       <Skeleton v-if="store.loadSkeleton" class="h-8 w-20 rounded-xl" />
       <Button v-else-if="store.loadSkeleton === false" class="flex bg-stone-950 hover:bg-stone-900 hover:text-neutral-200 border-green-600" variant="outline" @click="store.isOpen = true">
@@ -84,7 +87,7 @@ const handleClick = (countrycode: string) => {
               {{ country.code }}
             </li>
           </ul> -->
-          <button v-for="country in store.filteredCountries" :key="country" class="flex items-center px-2 py-2 gap-2 hover:bg-gray-900" @click="handleClick(country.code)">
+          <!-- <button v-for="country in store.filteredCountries" :key="country" class="flex items-center px-2 py-2 gap-2 hover:bg-gray-900" @click="handleClick(country.code)">
             <span>
                 <img
                   :src="`https://flagcdn.com/w40/${getCountryCode(country.code).toLowerCase()}.png`"
@@ -96,8 +99,8 @@ const handleClick = (countrycode: string) => {
         </button>
         </div>
       </div>
-    </DialogContent>
-  </Dialog>
+    </DialogContent> -->
+  <!--</Dialog> -->
 </template>
 
 <style scoped></style>

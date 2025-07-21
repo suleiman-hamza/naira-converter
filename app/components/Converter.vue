@@ -1,16 +1,16 @@
 <script lang="ts" setup>
-import type {Ref} from 'vue'
+// import type {Ref} from 'vue'
 import {computed, ref, watch, watchEffect} from 'vue';
-import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle,} from '@/components/ui/card';
+// import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle,} from '@/components/ui/card';
 
-import {Skeleton} from "@/components/ui/skeleton";
-import {Separator} from '@/components/ui/separator';
-import Button from './ui/button/Button.vue';
-import Input from './ui/input/Input.vue';
-import Label from './ui/label/Label.vue';
-import {userateStore} from '@/stores/useRateStore';
+// import {Skeleton} from "@/components/ui/skeleton";
+// import {Separator} from '@/components/ui/separator';
+// import Button from './ui/button/Button.vue';
+// import Input from './ui/input/Input.vue';
+// import Label from './ui/label/Label.vue';
+// import {userateStore} from '@/stores/useRateStore';
 
-const store = userateStore();
+// const store = userateStore();
 
 const ngnInitialAmount: Ref<number> = ref(0);
 const localizedAmount: Ref<number> = ref(0);
@@ -65,7 +65,7 @@ watchEffect(() => {
 
 </script>
 <template>
-    <Skeleton v-if="store.loadSkeleton" class="h-80 w-full rounded-xl max-w-xs mx-auto mb-8" />
+    <!-- <Skeleton v-if="store.loadSkeleton" class="h-80 w-full rounded-xl max-w-xs mx-auto mb-8" />
         <Card v-else-if="store.loadSkeleton === false" class="max-w-xs mx-auto mb-8 bg-stone-900 border-gray-600">
             <CardHeader class="p-4">
             <CardTitle class="text-white text-lg">Currency Converter</CardTitle>
@@ -104,7 +104,8 @@ watchEffect(() => {
                         </div>
                     </div>
             </CardFooter>
-        </Card>
+        </Card> -->
+        <p>Converter Ui here</p>
 </template>
 <style scoped>
 </style>

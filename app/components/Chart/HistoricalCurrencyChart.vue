@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import Button from '../ui/button/Button.vue';
-import { AreaChart } from '@/components/ui/chart-area';
+// import Button from '../ui/button/Button.vue';
+// import { AreaChart } from '@/components/ui/chart-area';
 
 onMounted(() => {
 	getHistory();
@@ -73,8 +73,9 @@ const showchart = ref(true)
 	<div class="relative rounded-lg border border-gray-600 px-4 py-3 text-sm max-w-xs mx-auto">
 		<div v-if="showchart === false" class='flex space-y-4 flex-col items-center justify-center'>
 			<h2 className='text-xl '>Historic chart failed to load</h2>
-			<Button variant='destructive' @click="getHistory">Retry</Button>
+			<button @click="getHistory">Retry</button>
 		</div>
-		<AreaChart v-else :data="chartHistory" index="date" :categories="['date', 'value']" :show-grid-line="true" class="custom-area h-[250px]" />
+		<!--<AreaChart v-else :data="chartHistory" index="date" :categories="['date', 'value']" :show-grid-line="true" class="custom-area h-[250px]" />
+		-->
 	</div>
 </template>

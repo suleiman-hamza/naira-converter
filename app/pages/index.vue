@@ -1,7 +1,7 @@
 <template>
-  <Header />
+  <!-- <Header /> -->
   <Converter />
-  <HistoricalCurrencyChart />
+  <!-- <HistoricalCurrencyChart /> -->
   <Footer />
 </template>
 

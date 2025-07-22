@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import {computed, ref, watch, watchEffect} from 'vue';
 
-const ngnInitialAmount: Ref<number> = ref(0);
-const localizedAmount: Ref<number> = ref(0);
+const ngnInitialAmount = ref(0);
+const localizedAmount = ref(0);
 
 function clearInputs() {
     ngnInitialAmount.value = 0;

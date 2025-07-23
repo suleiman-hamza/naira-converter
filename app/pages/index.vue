@@ -1,7 +1,7 @@
 <template>
   <main class="border max-w-4xl mx-auto p-4">
     <Converter />
-    <!-- <HistoricalCurrencyChart /> -->
+    <HistoricalCurrencyChart />
     <Footer />
   </main>
 </template>

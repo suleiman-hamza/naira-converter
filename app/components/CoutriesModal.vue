@@ -30,17 +30,17 @@ import {onMounted} from "vue";
 //   store.getcountryRate(store.selectedCountry)
 //   store.isOpen = false;
 // };
-
+const isOpen = ref(false);
+const selectedCountry = "Selectedcountry";
 </script>
 
 <template>
-  <NuxtLink to="/" class="bg-stone-950 hover:bg-stone-900 hover:text-neutral-200 border p-2 border-green-600">
+  <!-- <NuxtLink to="/" class="bg-stone-950 hover:bg-stone-900 hover:text-neutral-200 border p-2 border-green-600">
     Dialog Comp
-  </NuxtLink>
-  <!-- <Dialog v-model:open="store.isOpen">
+  </NuxtLink> -->
+  <Dialog>
     <DialogTrigger as-child>
-      <Skeleton v-if="store.loadSkeleton" class="h-8 w-20 rounded-xl" />
-      <Button v-else-if="store.loadSkeleton === false" class="flex bg-stone-950 hover:bg-stone-900 hover:text-neutral-200 border-green-600" variant="outline" @click="store.isOpen = true">
+      <Button class="flex bg-stone-950 hover:bg-stone-900 hover:text-neutral-200 border-green-600" variant="outline">
         <span>
           <img
             :src="`https://flagcdn.com/w40/cn.png`"
@@ -48,7 +48,7 @@ import {onMounted} from "vue";
             class="rounded-full w-4 h-4"
           />
           </span>
-        {{ store.selectedCountry }}
+        {{ selectedCountry }}
       </Button>
     </DialogTrigger>
     <DialogContent
@@ -60,8 +60,7 @@ import {onMounted} from "vue";
           Select currency to compare to Nigeria price.
         </DialogDescription>
         <div class="my-2">
-          <Input
-            v-model="store.searchQuery"
+          <input
             class="max-w-4xl bg-stone-900 border-gray-500"
             placeholder="Search for Currency..."
             type="text"
@@ -70,37 +69,34 @@ import {onMounted} from "vue";
       </DialogHeader>
       <div class="grid gap-4 overflow-y-auto border mx-1.5 rounded-xl">
         <div class="flex flex-col max-h-[80dvh] divide-y divide-slate-700 rounded-xl">
-          <!-- <ul>
+          <ul>
             <li
-              v-for="country in filteredCountries"
-              :key="country"
               class="flex items-center gap-2 mt-4 cursor-pointer"
-              @click="handleClick(country.name)"
             >
               <span>
                 <img
-                  :src="`https://flagcdn.com/w40/${getCountryCode(country.code).toLowerCase()}.png`"
+                  :src="`https://flagcdn.com/w40/usd.png`"
                   alt="flag"
                   class="rounded-full w-8 h-8"
                 />
               </span>
-              {{ country.code }}
+              somecountry code
             </li>
-          </ul> -->
-          <!-- <button v-for="country in store.filteredCountries" :key="country" class="flex items-center px-2 py-2 gap-2 hover:bg-gray-900" @click="handleClick(country.code)">
+          </ul>
+          <button class="flex items-center px-2 py-2 gap-2 hover:bg-gray-900">
             <span>
                 <img
-                  :src="`https://flagcdn.com/w40/${getCountryCode(country.code).toLowerCase()}.png`"
+                  :src="`https://flagcdn.com/w40/usd.png`"
                   alt="flag"
                   class="rounded-full w-6 h-6"
                 />
             </span>
-            {{ country.code }}
+            country code
         </button>
         </div>
       </div>
-    </DialogContent> -->
-  <!--</Dialog> -->
+    </DialogContent>
+  </Dialog>
 </template>
 
 <style scoped></style>

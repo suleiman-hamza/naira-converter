@@ -8,7 +8,7 @@ export default defineNuxtConfig({
       tailwindcss(),
     ],
   },
-  modules: ['shadcn-nuxt'],
+  modules: ['shadcn-nuxt', 'nuxt-charts'],
   // tailwindcss: {
   //   cssPath: '~/assets/css/main.css',
   // },

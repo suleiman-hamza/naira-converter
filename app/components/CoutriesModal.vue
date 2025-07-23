@@ -1,25 +1,5 @@
 <script lang="ts" setup>
-import {onMounted} from "vue";
-// import {Button} from "@/components/ui/button";
-// import {Skeleton} from "@/components/ui/skeleton";
-// import {
-//   Dialog,
-//   DialogContent,
-//   DialogDescription,
-//   DialogHeader,
-//   DialogTitle,
-//   DialogTrigger,
-// } from "@/components/ui/dialog";
-// import {Input} from "../ui/input";
-// import {currencyToCountryMap} from "@/data";
-// import {userateStore} from "@/stores/useRateStore";
-
-// const store = userateStore();
-
-// onMounted(()=> {
-//   store.fetchData();
-
-// })
+const { data: response } = await useFetch('/api/hello');
 
 // const getCountryCode = (currencyCode: string) => {
 //   return currencyToCountryMap[currencyCode.toUpperCase()] || "";
@@ -35,15 +15,12 @@ const selectedCountry = "Selectedcountry";
 </script>
 
 <template>
-  <!-- <NuxtLink to="/" class="bg-stone-950 hover:bg-stone-900 hover:text-neutral-200 border p-2 border-green-600">
-    Dialog Comp
-  </NuxtLink> -->
   <Dialog>
     <DialogTrigger as-child>
       <Button class="flex bg-stone-950 hover:bg-stone-900 hover:text-neutral-200 border-green-600" variant="outline">
         <span>
           <img
-            :src="`https://flagcdn.com/w40/cn.png`"
+            src="https://flagcdn.com/16x12/ua.png"
             alt="flag"
             class="rounded-full w-4 h-4"
           />
@@ -67,10 +44,11 @@ const selectedCountry = "Selectedcountry";
           />
         </div>
       </DialogHeader>
-      <div class="grid gap-4 overflow-y-auto border mx-1.5 rounded-xl">
-        <div class="flex flex-col max-h-[80dvh] divide-y divide-slate-700 rounded-xl">
-          <ul>
+      <div class="grid gap-4 overflow-y-auto mx-1.5">
+        <div class="flex flex-col max-h-[80dvh] divide-y divide-slate-700">
+          <ul class="border border-blue-500 p-2">
             <li
+            v-for="items in response"
               class="flex items-center gap-2 mt-4 cursor-pointer"
             >
               <span>
@@ -80,10 +58,10 @@ const selectedCountry = "Selectedcountry";
                   class="rounded-full w-8 h-8"
                 />
               </span>
-              somecountry code
+              {{ items }}
             </li>
           </ul>
-          <button class="flex items-center px-2 py-2 gap-2 hover:bg-gray-900">
+          <!-- <button class="flex items-center px-2 py-2 gap-2 hover:bg-gray-900">
             <span>
                 <img
                   :src="`https://flagcdn.com/w40/usd.png`"
@@ -92,11 +70,12 @@ const selectedCountry = "Selectedcountry";
                 />
             </span>
             country code
-        </button>
+        </button> -->
         </div>
       </div>
     </DialogContent>
   </Dialog>
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>

@@ -1,6 +1,6 @@
 export default defineEventHandler((event)=> {
     return {
-        USD: "USzzz",
+        USD: "US",
         EUR: "EU",
         GBP: "GB",
         JPY: "JP",

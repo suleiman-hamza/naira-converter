@@ -1,0 +1,5 @@
+export default defineEventHandler(async (event) => {
+    const currencyData = await $fetch('https://www.floatrates.com/daily/ngn.json')
+
+    return currencyData;
+})

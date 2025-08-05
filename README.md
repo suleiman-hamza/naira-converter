@@ -26,7 +26,7 @@ Naira-X is a straightforward Naira converter designed to simplify currency conve
      ```
    - This will start a local development server, and you can access the app in your browser
 
-   **Here are list of features that are yet to be added
+   **Here are list of features that are yet to be added:**
    - [x] Converter
    - [ ] Historical Currency Data on Chart
    - [ ] MCP sever call for currency conversion

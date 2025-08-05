@@ -4,14 +4,6 @@ Naira-X is a straightforward Naira converter designed to simplify currency conve
 
  Using the latest `Vue3`, `Vite`, `TypeScript` and other mainstream technology for development. It comes with chart history for all available currencies.
 
-
-**Welcome to the Currency Converter Project!**
-
-**Contribution Guide**
-
-We're excited that you're interested in contributing to this project. Your contributions help make this project better for everyone.
-
-
 **Getting Started**
 
 1. **Fork the Repository:**
@@ -32,59 +24,18 @@ We're excited that you're interested in contributing to this project. Your contr
      ```bash
      npm run dev
      ```
-   - This will start a local development server, and you can access the app in your browser at `http://localhost:5173`.
+   - This will start a local development server, and you can access the app in your browser
 
-**Making Contributions**
+   **Here are list of features that are yet to be added
+   - [x] Converter
+   - [ ] Historical Currency Data on Chart
+   - [ ] MCP sever call for currency conversion
+   - [ ] Light and Dark Mode
+   - [x] About Page
+   - [ ] More Available Currencies
+   - [ ] Changelogs in About Page
+   - [ ] Naira-x Logo
 
-1. **Create a New Branch:**
-   - Create a new branch for your feature or bug fix:
-     ```bash
-     git checkout -b branch-name
-     ```
-2. **Make Your Changes:**
-   - Make your desired changes to the codebase.
-3. **Commit Your Changes:**
-   - Commit your changes with clear and concise commit messages:
-     ```bash
-     git add .
-     git commit -m "Add new feature: Currency conversion from USD to EUR"
-     ```
-4. **Push Your Changes to Your Fork:**
-   - Push your changes to your remote fork:
-     ```bash
-     git push origin branch-name
-     ```
-5. **Create a Pull Request:**
-   - On GitHub, create a pull request from your branch to the main branch of the original repository.
-   - Provide a clear and concise description of your changes in the pull request.
-
-**Code Style and Formatting**
-
-* **Adhere to the existing code style and formatting.**
-* **Use clear and concise variable and function names.**
-* **Write clean and well-documented code.**
-* **Follow TypeScript best practices.**
-
-## Git Contribution submission specification
-
-- reference [vue](https://github.com/vuejs/vue/blob/dev/.github/COMMIT_CONVENTION.md) specification.
-
-  - `feat` Add new features
-  - `fix` Fix the problem/BUG
-  - `style` The code style is related and does not affect the running result
-  - `perf` Optimization/performance improvement
-  - `refactor` Refactor
-  - `revert` Undo edit
-  - `test` Test related
-  - `chore` Dependency update/scaffolding configuration modification etc.
-  - `types` Type definition file changes
-  - `wip` In development
-
-**Code Review**
-
-* **Be patient during the code review process.**
-* **Address feedback and suggestions from reviewers.**
-* **Be open to alternative approaches and improvements.**
 
 **Thank you for your contributions!**
 By following these guidelines, you can help make this project even better. If you have any questions or need further assistance, feel free to reach out to the project maintainers.
